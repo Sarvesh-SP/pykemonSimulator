@@ -59,7 +59,31 @@ class Pykemon():
         print(f"Speed: {self.speed}")
 
 
-class Fire():
+class Fire(Pykemon):
+    """A fire based Pykemon that is a child of the Pykemon parent class"""
+
+    def __init__(self, name, element, health, speed):
+        """Initialise attributes from the parent Pykemon classs."""
+        super().__init__(self, name, element, health, speed)
+        moves = ['Scratch', 'Ember', 'Pain Split', 'Fire Blast']
+
+    def special_attack(self, enemy):
+        """FIRE BLAST: an elemental fire move. Massive damage to grass type, normal damage to fire type, minimal damage to water type."""
+        print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
+
+        if enemy.element == "GRASS":
+            print("It's SUPER effective!")
+            damage = random.randint(35, 50)
+        elif enemy.element = "WATER":
+            print("It's not very effective...")
+            damage = random.randint(5, 10)
+        else:
+            damage = random.randint(10, 30)
+
+        print(f"It dealt {damage} damage.")
+        enemy.current_heatlth -= damage
+
+    def move_info():
 
 
 class Water():
