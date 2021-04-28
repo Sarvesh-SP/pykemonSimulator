@@ -64,8 +64,8 @@ class Fire(Pykemon):
 
     def __init__(self, name, element, health, speed):
         """Initialise attributes from the parent Pykemon classs."""
-        super().__init__(self, name, element, health, speed)
-        moves = ['Scratch', 'Ember', 'Pain Split', 'Fire Blast']
+        super().__init__(name, element, health, speed)
+        self.moves = ['Scratch', 'Ember', 'Pain Split', 'Fire Blast']
 
     def special_attack(self, enemy):
         """FIRE BLAST: an elemental fire move. Massive damage to grass type, normal damage to fire type, minimal damage to water type."""
@@ -74,96 +74,7 @@ class Fire(Pykemon):
         if enemy.element == "GRASS":
             print("It's SUPER effective!")
             damage = random.randint(35, 50)
-        elif enemy.element = "WATER":
-            print("It's not very effective...")
-            damage = random.randint(5, 10)
-        else:
-            damage = random.randint(10, 30)
-
-        print(f"It dealt {damage} damage.")
-        enemy.current_heatlth -= damage
-
-    def move_info():
-        """Display pykemon move info"""
-        print(f"\n{self.name} Moves: ")
-        print(f"--{self.moves[0]}--")
-        print(f"\tAn efficient attack...")
-        print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
-
-        print(f"--{self.moves[1]}--")
-        print("\nAn risky attack...")
-        print("\tCould deal damage up to 50 damage points or as little as 0 damage points.")
-
-        print(f"--{self.moves[2]}--")
-        print("\tA restorative move...")
-        print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
-
-        print(f"--{self.moves[3]}--")
-        print("\tA powerful FIRE based attack...")
-        print("\tGuaranteed to deal MASSIVE damage to GRASS type Pykemon.")
-
-
-class Water(Pykemon):
-    """A Water based Pykemon that is a child of the Pykemon parent class"""
-
-       def __init__(self, name, element, health, speed):
-            """Initialise attributes from the parent Pykemon classs."""
-            super().__init__(self, name, element, health, speed)
-            moves = ['Bite', 'Splash', 'Water Absorb', 'Hydro Cannon']
-
-        def special_attack(self, enemy):
-            """HYDRO CANNON: an elemental water move. Massive damage to fire type, normal damage to water type, minimal damage to grass type."""
-            print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
-
-            if enemy.element == "FIRE":
-                print("It's SUPER effective!")
-                damage = random.randint(35, 50)
-            elif enemy.element = "GRASS":
-                print("It's not very effective...")
-                damage = random.randint(5, 10)
-            else:
-                damage = random.randint(10, 30)
-
-            print(f"It dealt {damage} damage.")
-            enemy.current_heatlth -= damage
-
-        def move_info(self):
-            """Display pykemon move info"""
-            print(f"\n{self.name} Moves: ")
-            print(f"--{self.moves[0]}--")
-            print(f"\tAn efficient attack...")
-            print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
-
-            print(f"--{self.moves[1]}--")
-            print("\nAn risky attack...")
-            print(
-                "\tCould deal damage up to 50 damage points or as little as 0 damage points.")
-
-            print(f"--{self.moves[2]}--")
-            print("\tA restorative move...")
-            print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
-
-            print(f"--{self.moves[3]}--")
-            print("\tA powerful WATER based attack...")
-            print("\tGuaranteed to deal MASSIVE damage to FIRE type Pykemon.")
-
-
-class Grass(Pykemon):
-  """A Grass based Pykemon that is a child of the Pykemon parent class"""
-
-    def __init__(self, name, element, health, speed):
-        """Initialise attributes from the parent Pykemon classs."""
-        super().__init__(self, name, element, health, speed)
-        moves = ['Vine Whip', 'Wrap', 'Leech Seed', 'Solar Beam']
-
-    def special_attack(self, enemy):
-        """SOLAR BEAM: an elemental grass move. Massive damage to water type, normal damage to grass type, minimal damage to fire type."""
-        print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
-
-        if enemy.element == "WATER":
-            print("It's SUPER effective!")
-            damage = random.randint(35, 50)
-        elif enemy.element = "FIRE":
+        elif enemy.element == "WATER":
             print("It's not very effective...")
             damage = random.randint(5, 10)
         else:
@@ -180,8 +91,98 @@ class Grass(Pykemon):
         print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
 
         print(f"--{self.moves[1]}--")
-        print("\nAn risky attack...")
+        print("\tAn risky attack...")
         print("\tCould deal damage up to 50 damage points or as little as 0 damage points.")
+
+        print(f"--{self.moves[2]}--")
+        print("\tA restorative move...")
+        print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
+
+        print(f"--{self.moves[3]}--")
+        print("\tA powerful FIRE based attack...")
+        print("\tGuaranteed to deal MASSIVE damage to GRASS type Pykemon.")
+
+
+class Water(Pykemon):
+    """A Water based Pykemon that is a child of the Pykemon parent class"""
+
+    def __init__(self, name, element, health, speed):
+        """Initialise attributes from the parent Pykemon classs."""
+        super().__init__(name, element, health, speed)
+        self.moves = ['Bite', 'Splash', 'Water Absorb', 'Hydro Cannon']
+
+    def special_attack(self, enemy):
+        """HYDRO CANNON: an elemental water move. Massive damage to fire type, normal damage to water type, minimal damage to grass type."""
+        print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
+
+        if enemy.element == "FIRE":
+            print("It's SUPER effective!")
+            damage = random.randint(35, 50)
+        elif enemy.element == "GRASS":
+            print("It's not very effective...")
+            damage = random.randint(5, 10)
+        else:
+            damage = random.randint(10, 30)
+
+        print(f"It dealt {damage} damage.")
+        enemy.current_heatlth -= damage
+
+    def move_info(self):
+        """Display pykemon move info"""
+        print(f"\n{self.name} Moves: ")
+        print(f"--{self.moves[0]}--")
+        print(f"\tAn efficient attack...")
+        print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
+
+        print(f"--{self.moves[1]}--")
+        print("\tAn risky attack...")
+        print(
+            "\tCould deal damage up to 50 damage points or as little as 0 damage points.")
+
+        print(f"--{self.moves[2]}--")
+        print("\tA restorative move...")
+        print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
+
+        print(f"--{self.moves[3]}--")
+        print("\tA powerful WATER based attack...")
+        print("\tGuaranteed to deal MASSIVE damage to FIRE type Pykemon.")
+
+
+class Grass(Pykemon):
+    """A Grass based Pykemon that is a child of the Pykemon parent class"""
+
+    def __init__(self, name, element, health, speed):
+        """Initialise attributes from the parent Pykemon classs."""
+        super().__init__(name, element, health, speed)
+        self.moves = ['Vine Whip', 'Wrap', 'Leech Seed', 'Solar Beam']
+
+    def special_attack(self, enemy):
+        """SOLAR BEAM: an elemental grass move. Massive damage to water type, normal damage to grass type, minimal damage to fire type."""
+        print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
+
+        if enemy.element == "WATER":
+            print("It's SUPER effective!")
+            damage = random.randint(35, 50)
+        elif enemy.element == "FIRE":
+            print("It's not very effective...")
+            damage = random.randint(5, 10)
+        else:
+            damage = random.randint(10, 30)
+
+        print(f"It dealt {damage} damage.")
+        enemy.current_heatlth -= damage
+
+    def move_info(self):
+        """Display pykemon move info"""
+        print(f"\n{self.name} Moves: ")
+        print(f"--{self.moves[0]}--")
+        print(f"\tAn efficient attack...")
+        print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
+
+        print(f"--{self.moves[1]}--")
+        print("\tAn risky attack...")
+        print(
+            "\tCould deal damage up to 50 damage points or as little as 0 damage points.")
 
         print(f"--{self.moves[2]}--")
         print("\tA restorative move...")
@@ -191,4 +192,70 @@ class Grass(Pykemon):
         print("\tA powerful GRASS based attack...")
         print("\tGuaranteed to deal MASSIVE damage to WATER type Pykemon.")
 
+
 class Game():
+    """A game object to controll the createion and flow of pykemon and simulater battle!"""
+
+    def __init__(self):
+        """Initialize attributes"""
+        self.pykemon_elements = ['FIRE', 'WATER', 'GRASS']
+        self.pykemon_names = ['Poopachu', 'Bulmasaur', 'Squirty', 'Burnmander', 'Chewdie', 'Muttle',
+                              'Zantbat', 'Wiggly Poof', 'Sweetil', 'Jampot', 'Hownstooth', 'Swagilybo', 'Muttle', 'Pyonx']
+        self.battles_won = 0
+
+    def create_pykemon(self):
+        """Randomly generate a Pykemon"""
+        health = random.randint(70, 100)
+        speed = random.randint(1, 10)
+
+        element = self.pykemon_elements[random.randint(
+            0, len(self.pykemon_elements) - 1)]
+        name = self.pykemon_names[random.randint(
+            0, len(self.pykemon_names) - 1)]
+
+        if element == 'FIRE':
+            pykemon = Fire(name, element, health, speed)
+        elif element == 'WATER':
+            pykemon = Water(name, element, health, speed)
+        else:
+            pykemon = Grass(name, element, health, speed)
+        return pykemon
+
+    def choose_pykemon(self):
+        """A meathod to simulate choosing a starting Pykemon similar to Pokemon"""
+        starters = []
+
+        while len(starters) < 3:
+            pykemon = self.create_pykemon()
+            valid_pykemon = True
+
+            for starter in starters:
+                if starter.name == pykemon.name or starter.element == pykemon.element:
+                    valid_pykemon = False
+            if valid_pykemon:
+                starters.append(pykemon)
+        for pykemon in starters:
+            pykemon.show_stats()
+            pykemon.move_info()
+
+        print("\nProfessor Teak presents you with three Pykemon:")
+        print(f"(1) - {starters[0].name}")
+        print(f"(2) - {starters[1].name}")
+        print(f"(3) - {starters[2].name}")
+        choice = int(input("Which Pykemon would like to choose: "))
+
+        pykemon = starters[choice - 1]
+
+        return pykemon
+
+    def get_attack():
+        pass
+
+    def player_attack():
+        pass
+
+    def computer_attack():
+        pass
+
+    def battle():
+        pass
