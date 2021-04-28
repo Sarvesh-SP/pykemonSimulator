@@ -44,7 +44,12 @@ class Pykemon():
         if self.current_heatlth > self.max_health:
             self.current_heatlth = self.max_health
 
-    def faint():
+    def faint(self):
+        """If you run out of health, you faint..."""
+        if self.current_heatlth <= 0:
+            self.is_alive = False
+            print(f"Pykemon {self.name} has fainted!")
+            input("Press Enter to continue.")
 
     def show_stats():
 
