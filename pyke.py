@@ -248,14 +248,68 @@ class Game():
 
         return pykemon
 
-    def get_attack():
-        pass
+    def get_attack(self, pykemon):
+        """Get a users attack choice."""
+        print("\nWhat would you like to do...")
+        print(f"(1) - {pykemon.moves[0]}")
+        print(f"(2) - {pykemon.moves[1]}")
+        print(f"(3) - {pykemon.moves[2]}")
+        print(f"(4) - {pykemon.moves[3]}")
+        choice = int(input("Please enter your move choice: "))
 
-    def player_attack():
-        pass
+        print()
+        print("---------------------------------------------------------------------------------------------------------------------------")
 
-    def computer_attack():
-        pass
+        return choice
 
-    def battle():
-        pass
+    def player_attack(self, move, player, computer):
+        """Attack the computer AI"""
+        if move == 1:
+            player.light_attack(computer)
+        elif move == 2:
+            player.heavy_attack(computer)
+        elif move == 3:
+            player.restore()
+        elif move == 4:
+            player.special_attack(computer)
+
+        computer.faint()
+
+    def computer_attack(self, player, computer):
+        """Let the computer AI attack the player."""
+        if move == 1:
+            computer.light_attack(player)
+        elif move == 2:
+            computer.heavy_attack(player)
+        elif move == 3:
+            computer.restore()
+        elif move == 4:
+            computer.special_attack(player)
+
+        player.faint()
+
+    def battle(self, player, computer):
+        """Simulate a battle round. Faster Pykemon go first."""
+        move = self.get_attack(player)
+        if player.speed >= computer.speed:
+            self.player_attack(move, player, computer)
+            if computer.is_alive:
+                self.computer_attack(player, computer)
+        else:
+            self.computer_attack(player, computer)
+            if player.is_alive:
+                self.player_attack(move, player, computer)
+
+
+print("Welcome to Pykemon!")
+print("Can you become the worlds greatest Pykemon Trainer???")
+print("\nDon't worry! Prof Teak is here to help you on your quest.")
+print("Here are three potential Pykemon partners.")
+input("Press Enter to choose you Pykemon")
+
+playing_main = True
+while playing_main:
+    game = Game()
+
+    player = game.choose_pykemon()
+    print()
