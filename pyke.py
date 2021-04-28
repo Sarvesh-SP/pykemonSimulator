@@ -58,6 +58,9 @@ class Pykemon():
         print(f"Health: {self.current_heatlth} / {self.max_health}")
         print(f"Speed: {self.speed}")
 
+    def revive(self):
+        self.current_heatlth = self.max_health
+
 
 class Fire(Pykemon):
     """A fire based Pykemon that is a child of the Pykemon parent class"""
@@ -202,6 +205,7 @@ class Game():
         self.pykemon_names = ['Poopachu', 'Bulmasaur', 'Squirty', 'Burnmander', 'Chewdie', 'Muttle',
                               'Zantbat', 'Wiggly Poof', 'Sweetil', 'Jampot', 'Hownstooth', 'Swagilybo', 'Muttle', 'Pyonx']
         self.battles_won = 0
+        self.move = 0
 
     def create_pykemon(self):
         """Randomly generate a Pykemon"""
@@ -277,6 +281,7 @@ class Game():
 
     def computer_attack(self, player, computer):
         """Let the computer AI attack the player."""
+        move = random.randint(1, 4)
         if move == 1:
             computer.light_attack(player)
         elif move == 2:
@@ -312,4 +317,31 @@ while playing_main:
     game = Game()
 
     player = game.choose_pykemon()
-    print()
+    print(f"\nCongratulations Trainer, you have chosen {player.name}")
+    input(f"\nYour journey with {player.name} begins now...Press Enter!")
+
+    while player.is_alive:
+        computer = game.create_pykemon()
+        print(f"\nOH NO! A wild {computer.name} has approached!")
+        computer.show_stats()
+
+        while computer.is_alive and player.is_alive:
+            game.battle(player, computer)
+
+            if computer.is_alive and player.is_alive:
+                player.show_stats()
+                computer.show_stats()
+
+                print("-------------------------------------------------------------------------------------------------------------------------------------")
+        if player.is_alive:
+            game.battles_won += 1
+            player.revive()
+
+    print(f"\nPoor {player.name} has fainted...")
+    print(f"but not before defeating {game.battles_won} Pykemon!")
+
+    choice = input("Would you like to play again (y/n): ").lower()
+
+    if choice != 'y':
+        playing_main = False
+        print("Thank you for playing Pykemon!")
