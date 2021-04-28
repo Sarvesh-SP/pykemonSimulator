@@ -84,9 +84,68 @@ class Fire(Pykemon):
         enemy.current_heatlth -= damage
 
     def move_info():
+        """Display pykemon move info"""
+        print(f"\n{self.name} Moves: ")
+        print(f"--{self.moves[0]}--")
+        print(f"\tAn efficient attack...")
+        print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
+
+        print(f"--{self.moves[1]}--")
+        print("\nAn risky attack...")
+        print("\tCould deal damage up to 50 damage points or as little as 0 damage points.")
+
+        print(f"--{self.moves[2]}--")
+        print("\tA restorative move...")
+        print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
+
+        print(f"--{self.moves[3]}--")
+        print("\tA powerful FIRE based attack...")
+        print("\tGuaranteed to deal MASSIVE damage to GRASS type Pykemon.")
 
 
-class Water():
+class Water(Pykemon):
+    """A Water based Pykemon that is a child of the Pykemon parent class"""
+
+       def __init__(self, name, element, health, speed):
+            """Initialise attributes from the parent Pykemon classs."""
+            super().__init__(self, name, element, health, speed)
+            moves = ['Bite', 'Splash', 'Water Absorb', 'Hydro Cannon']
+
+        def special_attack(self, enemy):
+            """HYDRO CANNON: an elemental water move. Massive damage to fire type, normal damage to water type, minimal damage to grass type."""
+            print(f"Pykemon {self.name} used {self.moves[3].upper()}!")
+
+            if enemy.element == "FIRE":
+                print("It's SUPER effective!")
+                damage = random.randint(35, 50)
+            elif enemy.element = "GRASS":
+                print("It's not very effective...")
+                damage = random.randint(5, 10)
+            else:
+                damage = random.randint(10, 30)
+
+            print(f"It dealt {damage} damage.")
+            enemy.current_heatlth -= damage
+
+        def move_info():
+            """Display pykemon move info"""
+            print(f"\n{self.name} Moves: ")
+            print(f"--{self.moves[0]}--")
+            print(f"\tAn efficient attack...")
+            print("\tGuarnateed to do damage within a range of 15 to 25 damage points.")
+
+            print(f"--{self.moves[1]}--")
+            print("\nAn risky attack...")
+            print(
+                "\tCould deal damage up to 50 damage points or as little as 0 damage points.")
+
+            print(f"--{self.moves[2]}--")
+            print("\tA restorative move...")
+            print("\tGuaranteed to heal your Pykemon 15 to 25 damage points.")
+
+            print(f"--{self.moves[3]}--")
+            print("\tA powerful WATER based attack...")
+            print("\tGuaranteed to deal MASSIVE damage to FIRE type Pykemon.")
 
 
 class Grass():
