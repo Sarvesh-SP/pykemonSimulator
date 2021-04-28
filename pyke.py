@@ -23,9 +23,26 @@ class Pykemon():
         print(f"It dealt {damage} damage.")
         enemy.current_heatlth -= damage
 
-    def heavy_attack():
+    def heavy_attack(self, enemy):
+        """A heavy attack that could deal MASSIVE damage, or no damage at all."""
+        damage = random.randint(0, 50)
+        print(f"Pykemon {self.name} used {self.moves[1]}.")
+        if damage < 10:
+            print("The attack missed!!!")
+        else:
+            print(f"It dealt {damage} damage.")
+            enemy.current_heatlth -= damage
 
-    def restore():
+    def restore(self):
+        """A Healing move that will restore our current health"""
+        heal = random.randint(15, 25)
+        print(f"Pykemon {self.name} used {self.moves[2]}")
+        print(f"It healed {heal} health points.")
+
+        self.current_heatlth += heal
+
+        if self.current_heatlth > self.max_health:
+            self.current_heatlth = self.max_health
 
     def faint():
 
