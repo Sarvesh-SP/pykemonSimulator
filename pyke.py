@@ -51,7 +51,12 @@ class Pykemon():
             print(f"Pykemon {self.name} has fainted!")
             input("Press Enter to continue.")
 
-    def show_stats():
+    def show_stats(self):
+        """Display the current pykemon stats"""
+        print(f"\nName: {self.name}")
+        print(f"Element Type: {self.element}")
+        print(f"Health: {self.current_heatlth} / {self.max_health}")
+        print(f"Speed: {self.speed}")
 
 
 class Fire():
